@@ -19,10 +19,14 @@
       <li><a href="#">Page 2</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
- 		 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-         <li><a href="#"><span class="glyphicon glyphicon-user"></span> MyPage</a></li>
+ 		<%-- <c:when test=""> --%>
+ 		 <li><a href="${pageContext.request.contextPath }/member/memberLogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+         <li><a href="${pageContext.request.contextPath }/member/memberJoin"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+ 		<%-- </c:when> --%>
+		<%-- <c:otherwise> --%>
+         <li><a href="${pageContext.request.contextPath }/member/memberLogout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+         <li><a href="${pageContext.request.contextPath }/member/memberPage"><span class="glyphicon glyphicon-user"></span> MyPage</a></li>
+		<%-- </c:otherwise>       --%>  
     </ul>
   </div>
 </nav>

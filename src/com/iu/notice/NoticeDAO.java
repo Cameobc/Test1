@@ -12,12 +12,16 @@ import com.iu.util.DBConnector;
 public class NoticeDAO {
 	
 	//seq번호 가져오기
-/*	public int getNum() throws Exception{
+	public int getNum() throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "";
-		int result = 0;
+		String sql = "select notice_seq.nextval from dual";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		int result = rs.getInt(1);
+		DBConnector.disConnect(con, st, rs);
 		return result;
-	}*/
+	}
 	
 	public int getTotalCount(SearchRow searchRow) throws Exception {
 		Connection con = DBConnector.getConnect();
@@ -70,6 +74,18 @@ public class NoticeDAO {
 		}
 		DBConnector.disConnect(con, st, rs);
 		return ar;
+	}
+	
+	public int insert(NoticeDTO noticeDTO, Connection con) throws Exception {
+		String sql ="insert into notice values (?, ?, ?, ?, sysdate, 0)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, noticeDTO.getNum());
+		st.setString(2, noticeDTO.getTitle());
+		st.setString(3, noticeDTO.getContents());
+		st.setString(4, noticeDTO.getWriter());
+		int result =st.executeUpdate();
+		st.close();
+		return result;
 	}
 
 }

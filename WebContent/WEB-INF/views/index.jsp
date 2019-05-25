@@ -9,7 +9,7 @@
 </head>
 <body>
 <c:import url="./temp/header.jsp"/>
-<h1>Welcome</h1>
+<h1>Welcome ${sessionScope.member.id }</h1>
 <img alt="thunder" src="./images/성현제_20190304b.png">
 </body>
 </html>

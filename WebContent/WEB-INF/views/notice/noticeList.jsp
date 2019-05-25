@@ -27,21 +27,22 @@
 	</table>
 	<div class="container">
 		<ul class="pager">
-	<c:if test="${pager.curBlock gt 1 }">	
-    	<li><a href="./noticeList?curPage=${pager.startNum-1}&kind=${pager.search.kind}&search=${pager.search.search}">Previous</a></li>
-	</c:if>
-	<li>
-		<ul class="pagination">
-		<c:forEach begin="${pager.startNum }" end="${pager.lastNum }" var="num">		
-   			 <li><a href="./noticeList?curPage=${num}&kind=${pager.search.kind}&search=${pager.search.search}">${num }</a></li>
-		</c:forEach>
-  </ul>
-	</li>
-	<c:if test="${pager.curBlock lt pager.totalBlock}">	
-    	<li><a href="./noticeList?curPage=${pager.lastNum+1}&kind=${pager.search.kind}&search=${pager.search.search}">Next</a></li>
-	</c:if>	
-  	</ul>
+		<c:if test="${pager.curBlock gt 1 }">
+		  <li><a href="./noticeList?curPage=${pager.startNum-1}&serch=${pager.search.search}&kind=${pager.search.kind}">Previous</a></li>
+		</c:if>
+			 <li>
+			  	<ul class="pagination">
+		<c:forEach begin="${pager.startNum }" end="${pager.lastNum }" var="num">
+				  <li><a href="./noticeList?curPage=${num }&serch=${pager.search.search}&kind=${pager.search.kind}">${num }</a></li>
+		  </c:forEach>
+				</ul>
+			 </li>
+		<c:if test="${pager.curBlock lt pager.totalBlock }">
+		  <li><a href="./noticeList?curPage=${pager.lastNum+1}&serch=${pager.search.search}&kind=${pager.search.kind}">Next</a></li>
+		</c:if>
+		</ul>
 	</div>
+	<a href="./noticeWrite"><input type="button" value="Write" class="btn btn-primary"></a>
 </div>
 </body>
 </html>
